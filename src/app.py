@@ -23,7 +23,7 @@ PDF_DIR = DATA / "samples"
 DB = DATA / "index.db"
 PAGES = DATA / "pages"
 
-st.set_page_config(page_title="P&ID Tag Search", layout="wide",
+st.set_page_config(page_title="PidPilot", layout="wide",
                    page_icon="🏭")
 
 # ---------- helpers ----------
@@ -59,6 +59,9 @@ def draw_hit(png_path: str, x0, y0, x1, y1):
 
 # ---------- sidebar ----------
 with st.sidebar:
+    logo = ROOT / "assets" / "pidpilot-logo.webp"
+    if logo.exists():
+        st.image(str(logo), width=90)
     st.header("📁 Archive")
     uploaded = st.file_uploader("Upload P&ID PDFs", type="pdf",
                                 accept_multiple_files=True)
@@ -81,8 +84,8 @@ with st.sidebar:
                            use_container_width=True)
 
 # ---------- header ----------
-st.title("🏭 P&ID Tag Search")
-st.caption("Upload P&ID PDFs → search every equipment tag → click to highlight on the drawing → export the list.")
+st.title("PidPilot")
+st.caption("Your P&ID copilot — upload drawings, search every tag, export equipment lists.")
 
 if not DB.exists():
     st.info("👈 Build the index from the sidebar to get started.")
