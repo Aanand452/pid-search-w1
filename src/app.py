@@ -148,7 +148,13 @@ st.markdown("<p class='hero-sub'>Search every equipment tag across your P&ID "
             unsafe_allow_html=True)
 
 if not DB.exists():
-    st.info("👈 Upload PDFs and build the index from the sidebar to get started.")
+    st.info("👈 Build the index to get started.")
+    if st.button("🔨 Build demo index", type="primary"):
+        with st.spinner("Indexing sample P&IDs… (one-time, a couple of minutes)"):
+            stats = build_index(PDF_DIR, DB, PAGES)
+        st.success(f"✅ {stats['pdfs']} drawings · {stats['pages']} pages · "
+                   f"{stats['tag_hits']} tags indexed")
+        st.rerun()
     st.stop()
 
 s = index_stats(DB)
