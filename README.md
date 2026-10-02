@@ -1,4 +1,4 @@
-# P&ID Tag Search — Weekend 1
+# P&ID Tag Search 
 
 Upload a folder of P&ID PDFs → searchable tag index → click a hit, see the tag
 highlighted on the original drawing. No ML — embedded text first, OCR fallback.
@@ -39,9 +39,4 @@ Demo target: type `P-101` → every drawing/page listed → click → red box on
 3. **index.py** — SQLite: `tag -> (file, page, bbox, png)`. Exact + prefix search.
 4. **app.py** — Streamlit: search box, expandable hits, bbox overlay.
 
-## What's next (W2)
-
-Symbol detection (boxes for pumps/valves/vessels, not just text tags) using the
-AWS open-source P&ID pipeline's pre-trained model, overlaid on the same pages.
-Every drafter correction gets logged as structured training data
-(model version + timestamp) — that log is the future corpus.
+.
