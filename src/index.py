@@ -34,11 +34,13 @@ def build_index(pdf_dir: Path, db_path: Path, pages_dir: Path,
         for i, (png, scale) in enumerate(render_pages(pdf, pages_dir / pdf.stem, dpi)):
             stats["pages"] += 1
             hits = find_tags_with_boxes(page_words(pdf, i, png, scale))
+            # store png path relative to pages_dir -> portable across machines
+            png_rel = png.relative_to(pages_dir)
             con.executemany(
                 "INSERT INTO tags VALUES (?,?,?,?,?,?,?,?,?)",
                 [(h["tag"], pdf.name, i + 1,
                   h["x0"], h["y0"], h["x1"], h["y1"],
-                  str(png), h["src"]) for h in hits])
+                  str(png_rel), h["src"]) for h in hits])
             stats["tag_hits"] += len(hits)
     con.commit()
     con.close()

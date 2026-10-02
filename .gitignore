@@ -4,3 +4,4 @@ __pycache__/
 data/pages/
 data/index.db
 .streamlit/
+data/uploads/
