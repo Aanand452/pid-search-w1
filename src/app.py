@@ -55,6 +55,15 @@ header[data-testid="stHeader"] {{display: none;}}
     border: 1px solid #2E4468; border-radius: 8px; width: 100%;}}
 [data-testid="stSidebar"] [data-testid="stFileUploader"] {{
     background-color: #1B2A44; border-radius: 8px; padding: 8px;}}
+[data-testid="stFileUploaderDropzone"] {{
+    background-color: #1B2A44 !important;
+    border: 1px dashed #2E4468 !important;}}
+[data-testid="stFileUploaderDropzone"] span,
+[data-testid="stFileUploaderDropzone"] div {{
+    color: #E8EEF5 !important;}}
+[data-testid="stFileUploaderDropzone"] button {{
+    color: #E8EEF5 !important; border: 1px solid #2E4468 !important;
+    background-color: #24344F !important;}}
 
 /* ---------- main ---------- */
 h1 {{color: {NAVY} !important; font-weight: 800; letter-spacing: -0.5px;}}
